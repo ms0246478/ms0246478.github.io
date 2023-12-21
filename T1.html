@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老瘋好帥</title>
+    <style>
+        body {
+            font-size: 22px; /* 設定全局字體大小 */
+            text-align: center; /* 置中文字 */
+        }
+
+        h1 {
+            font-size: 30px; /* 調整標題字體大小 */
+        }
+
+        label, input, button {
+            margin: 10px; /* 調整元素間距 */
+            font-size: 18px; /* 調整元素字體大小 */
+        }
+
+        #outputResult {
+            margin: 10px; /* 調整元素間距 */
+            font-size: 20px; /* 調整元素字體大小 */
+            width: 100px; /* 設定輸出框寬度 */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>魔靈名子英中轉換器</h1>
+
+    <label for="userInput">魔靈英文名：</label>
+    <input type="text" id="userInput" placeholder="請直接貼上..." oninput="outputData()">
+    <br>
+    <input type="text" id="outputResult" readonly>
+	<button onclick="copyToClipboard()">複製</button>
+
+    <script>
+        // 假設這是你的簡單二維資料庫
+        var database = [
+            { name: 'Feng Yan', Cname: '風熊貓' },
+            { name: 'Amelia', Cname: '水馬' },
+            { name: 'Camilla', Cname: '水瓦' },
+			{ name: 'Carcano', Cname: '火MK' },
+			{ name: 'Molly', Cname: '光人魚' },
+			{ name: 'Woosa', Cname: '水仙人' },
+			{ name: 'Jeanne', Cname: '光派' },
+			{ name: 'Mihyang', Cname: '水舞女' },
+			{ name: 'Bolverk', Cname: '水雷帝' },
+			{ name: 'Mo Long', Cname: '水熊貓' },
+			{ name: 'Odin', Cname: '風雷帝' },
+			{ name: 'Leo', Cname: '風龍騎' },
+			{ name: 'Khmun', Cname: '火狗頭' },
+			{ name: 'Loren', Cname: '光卡' },
+			{ name: 'Elucia', Cname: '水仙女' },
+			{ name: 'Dusky', Cname: '暗南瓜' },
+			{ name: 'Manon', Cname: '水大美' },
+			{ name: 'Rakan', Cname: '火牛' },
+			{ name: 'Carlos', Cname: '火兵器' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			{ name: '', Cname: '' },
+			
+            // 可以繼續添加其他資料
+        ];
+
+        function outputData() {
+            // 取得使用者輸入的文字，並移除空白
+            var userInput = document.getElementById('userInput').value.trim();
+            // 在資料庫中尋找與輸入文字匹配的資料
+            var result = findData(userInput);
+
+            // 將結果輸出到指定的元素
+             document.getElementById('outputResult').value = result ? result.Cname : '找不到相符資料';
+        }
+
+        function findData(input) {
+            // 在資料庫中尋找與輸入文字匹配的資料
+            for (var i = 0; i < database.length; i++) {
+                if (database[i].name.toLowerCase() === input.toLowerCase()) {
+                    return database[i];
+                }
+            }
+            return null; // 如果找不到相符資料
+        }
+		
+		function copyToClipboard() {
+            // 取得輸出結果的元素
+            var outputResult = document.getElementById('outputResult');
+
+            // 選擇文本範圍
+            outputResult.select();
+            outputResult.setSelectionRange(0, 99999); // For mobile devices
+
+            // 複製到剪貼簿
+            document.execCommand("copy");
+
+            // 取消文本範圍的選擇
+            window.getSelection().removeAllRanges();
+        }
+    </script>
+
+</body>
+</html>
