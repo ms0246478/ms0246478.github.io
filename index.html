@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>老瘋好帥</title>
+    <title>玩物出品</title>
     <style>
         body {
             font-size: 22px;
@@ -24,7 +24,7 @@
             font-size: 20px;
             width: 100px;
         }
-		#outputResult2 {
+	#outputResult2 {
             margin: 10px;
             font-size: 20px;
             width: 100px;
@@ -33,15 +33,17 @@
 </head>
 <body>
 
-    <h1>魔靈名子英中轉換器</h1>
+    <h1>魔靈名子中英轉換器</h1>
 
-    <label for="userInput">魔靈英文名：</label>
-    <input type="text" id="userInput" placeholder="請直接貼上..." oninput="outputData()">
+    <label for="userInput">魔靈名：</label>
+    <input type="text" id="userInput" placeholder=" 請貼上 / 輸入..." oninput="outputData()">
     <br>
+    <label for="outputResult">英文：</label>
     <input type="text" id="outputResult" readonly>
     <button onclick="copyToClipboard()">複製</button>
-	<br>
-	<input type="text" id="outputResult2" readonly>
+    <br>
+    <label for="outputResult2">中文：</label>
+    <input type="text" id="outputResult2" readonly>
     <button onclick="copyToClipboard2()">複製</button>
 
     <script>
