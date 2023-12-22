@@ -17,20 +17,17 @@
 
         label, input, button {
             margin: 10px;
-            font-size: 18px;
+            font-size: 20px;
+            width: 133px;
         }
 
-        #outputResult {
+        #outputResult, #outputResult2 {
             margin: 10px;
             font-size: 20px;
-            width: 100px;
+            width: 133px;
         }
-	#outputResult2 {
-            margin: 10px;
-            font-size: 20px;
-            width: 100px;
-        }
-	button {
+
+        button {
             padding: 10px;
             cursor: pointer;
             background-color: #4CAF50;
@@ -47,37 +44,38 @@
 </head>
 <body>
     <br><br><br>
-    <h1>魔靈名子中英轉換器</h1>
-    <label for="userInput">魔靈名：</label>
-    <input type="text" id="userInput" placeholder=" 請貼上 / 輸入..." oninput="outputData()">
-    <br>
+    <h1>魔靈名字中英轉換器</h1>
+    <label for="userInput">魔靈：</label>
+    <input type="text" id="userInput" placeholder="請貼上 / 輸入..." oninput="outputData()">
+    <button onclick="clearInput()">清除</button>
+    <br><br>
     <label for="outputResult">英文：</label>
     <input type="text" id="outputResult" readonly>
     <button onclick="copyToClipboard()">複製</button>
-    <br>
+    <br><br>
     <label for="outputResult2">中文：</label>
     <input type="text" id="outputResult2" readonly>
     <button onclick="copyToClipboard2()">複製</button>
 
     <script>
         var database = [
-           		{ name: 'Feng Yan', Cname: '風熊貓' },
-          		{ name: 'Amelia', Cname: '水馬' },
-          	        { name: 'Camilla', Cname: '水瓦' },
-			{ name: 'Carcano', Cname: '火MK' },
-			{ name: 'Molly', Cname: '光人魚' },
-			{ name: 'Woosa', Cname: '水仙人' },
-			{ name: 'Jeanne', Cname: '光派拉丁' },
-			{ name: 'Mihyang', Cname: '水舞女' },
-			{ name: 'Bolverk', Cname: '水雷帝' },
-			{ name: 'Mo Long', Cname: '水熊貓' },
-			{ name: 'Odin', Cname: '風雷帝' },
-			{ name: 'Leo', Cname: '風龍騎' },
-			{ name: 'Khmun', Cname: '火狗頭' },
-			{ name: 'Loren', Cname: '光卡' },
-			{ name: 'Elucia', Cname: '水仙女' },
-			{ name: 'Dusky', Cname: '暗南瓜' },
-			{ name: 'Manon', Cname: '水大美' },
+			{ name: 'Feng Yan', Cname: '風熊貓' },
+            { name: 'Amelia', Cname: '水馬' },
+            { name: 'Camilla', Cname: '水瓦' },
+		    { name: 'Carcano', Cname: '火MK' },
+		    { name: 'Molly', Cname: '光人魚' },
+		    { name: 'Woosa', Cname: '水仙人' },
+		    { name: 'Jeanne', Cname: '光派拉丁' },
+		    { name: 'Mihyang', Cname: '水舞女' },
+		    { name: 'Bolverk', Cname: '水雷帝' },
+		    { name: 'Mo Long', Cname: '水熊貓' },
+		    { name: 'Odin', Cname: '風雷帝' },
+		    { name: 'Leo', Cname: '風龍騎' },
+		    { name: 'Khmun', Cname: '火狗頭' },
+		    { name: 'Loren', Cname: '光卡' },
+		    { name: 'Elucia', Cname: '水仙女' },
+		    { name: 'Dusky', Cname: '暗南瓜' },
+		    { name: 'Manon', Cname: '水大美' },
 			{ name: 'Rakan', Cname: '火牛' },
 			{ name: 'Carlos', Cname: '火兵器' },
 			{ name: 'Praline', Cname: '風巧克力' },
@@ -231,15 +229,14 @@
             var result = findData(userInput);
 
             document.getElementById('outputResult').value = result ? result.name : '找不到相符資料';
-			document.getElementById('outputResult2').value = result ? result.Cname : '找不到相符資料';
+            document.getElementById('outputResult2').value = result ? result.Cname : '找不到相符資料';
         }
 
         function findData(input) {
             for (var i = 0; i < database.length; i++) {
                 if (database[i].Cname === input) {
                     return database[i];
-                }
-				else if(database[i].name === input) {
+                } else if(database[i].name === input) {
                     return database[i];
                 }
             }
@@ -253,12 +250,19 @@
             document.execCommand("copy");
             window.getSelection().removeAllRanges();
         }
-		function copyToClipboard2() {
+
+        function copyToClipboard2() {
             var outputResult2 = document.getElementById('outputResult2');
             outputResult2.select();
             outputResult2.setSelectionRange(0, 99999);
             document.execCommand("copy");
             window.getSelection().removeAllRanges();
+        }
+
+        function clearInput() {
+            document.getElementById('userInput').value = '';
+            document.getElementById('outputResult').value = '';
+            document.getElementById('outputResult2').value = '';
         }
     </script>
 
